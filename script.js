@@ -8,7 +8,7 @@ function addBeer(name, category, rate) {
 }
 
 $('.post-beer').on('click', function() {
-    addBeer($(".beer-input").val(), $(".category-input").val(), $(".rate-input option:selected").text());
+    addBeer($(".beer-input").val(), $(".category-input").val(), $(".rate-input option:selected").val());
     renderBeers();
 });
 $('.sort-beer').on('click', function() {
@@ -27,8 +27,18 @@ function renderBeers() {
     $(".beers-list").find('li').remove();
     for (let beer of beers) {
         if (parseInt(beer.rate) >= 0) {
-            rate = " , " + beer.rate + "-stars";
+            $(".beers-list").append(
+                $('<li>').append(
+                    $('<span>').addClass("breadcrumb text").append(" " + beer.category),
+                    $('<span>').addClass("breadcrumb text").append(" " + beer.name),
+                    $('<span>').attr('class', 'badge').append(" " + beer.rate + " stars")
+                ));
+        } else {
+            $(".beers-list").append(
+                $('<li>').append(
+                    $('<span>').addClass("breadcrumb text").append(" " + beer.category),
+                    $('<span>').addClass("breadcrumb text").append(" " + beer.name)
+                ));
         }
-        $(".beers-list").append($("<li>").text(beer.name + " , " + beer.category + rate));
     }
 }

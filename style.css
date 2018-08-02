@@ -1,7 +1,13 @@
 form {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
-.user-post, .user-review {
-  font-weight: bold;
+.user-post,
+.user-review {
+    font-weight: bold;
+}
+
+.text {
+    padding: 1%;
+    background-color: rgba(203, 189, 216, 0.829);
 }
